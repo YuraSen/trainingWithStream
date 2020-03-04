@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.addressing.WsaActionUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,15 +19,13 @@ public class Main {
 //        numbers.add(-9);
 //        numbers.add(47);
 //        numbers.add(12);
+        System.out.println("Task 1: ");
 
-//---------------------------1_array---------------------------------------
-        System.out.println("---------------------------1_array-----------------------------------");
-
+        System.out.println("For array");
         System.out.println(IntStream.of(array).average().getAsDouble());
         System.out.println((double) IntStream.of(array).reduce(Integer::sum).getAsInt() / array.length);
-//---------------------------1_Collection-----------------------------------
-        System.out.println("---------------------------1_Collection-----------------------------------");
 
+        System.out.println("For collection");
         System.out.println(numbers.stream()
                 .mapToInt(s -> s)
                 .average()
@@ -41,9 +37,9 @@ public class Main {
                 .reduce(Double::sum)
                 .getAsDouble() / numbers.size()
         );
-//---------------------------1----------------------------------------------
 //---------------------------2----------------------------------------------
-        System.out.println("------------------2------------------");
+        System.out.println("Task 2: ");
+
         List<Integer> minvalue = new ArrayList<>();
 //        for (int i = 0; i < 25; i++) {
 //            minvalue.add((int) (Math.random() * 40 - 10));
@@ -56,7 +52,6 @@ public class Main {
         minvalue.add(12);
 
         System.out.println("Arrays");
-
         System.out.println(IntStream.of(IntStream.of(array).min().getAsInt(),
                 IntStream.of(array)
                         .boxed()
@@ -64,6 +59,7 @@ public class Main {
                         .indexOf(IntStream.of(array).min().getAsInt()))
                 .boxed()
                 .collect(Collectors.toList()));
+
         System.out.println("Collection");
         System.out.println(minvalue.stream().mapToInt(i -> i).min().getAsInt() +
                 minvalue.stream()
@@ -72,10 +68,16 @@ public class Main {
                         .collect(Collectors.toList())
                         .indexOf(minvalue.stream().mapToInt(i -> i).min().getAsInt()));
 //---------------------------3----------------------------------------------
+        System.out.println("Task 3: ");
+
         System.out.println(IntStream.of(array).filter(number -> number == 0).count());
 //---------------------------4----------------------------------------------
+        System.out.println("Task 4: ");
+
         System.out.println(IntStream.of(array).filter(number -> number > 0).count());
 //---------------------------5----------------------------------------------
+        System.out.println("Task 5: ");
+
         int multiplier = 10;
         System.out.println(IntStream.of(array).mapToObj(number -> number * multiplier).collect(Collectors.toList()));
     }
