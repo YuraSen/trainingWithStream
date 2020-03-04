@@ -1,6 +1,7 @@
+import com.sun.xml.internal.ws.addressing.WsaActionUtil;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -54,6 +55,8 @@ public class Main {
         minvalue.add(47);
         minvalue.add(12);
 
+        System.out.println("Arrays");
+
         System.out.println(IntStream.of(IntStream.of(array).min().getAsInt(),
                 IntStream.of(array)
                         .boxed()
@@ -61,15 +64,13 @@ public class Main {
                         .indexOf(IntStream.of(array).min().getAsInt()))
                 .boxed()
                 .collect(Collectors.toList()));
-
-        int minvalueOf = minvalue.stream().mapToInt(i -> i).min().getAsInt();
-        int indexOfMinValue = minvalue.stream()
-                .mapToInt(i->i)
-                .boxed()
-                .collect(Collectors.toList())
-                .indexOf(minvalueOf);
-
-        System.out.println("minValue: " + minvalueOf + " " + "Index: " + indexOfMinValue);
+        System.out.println("Collection");
+        System.out.println(minvalue.stream().mapToInt(i -> i).min().getAsInt() +
+                minvalue.stream()
+                        .mapToInt(i -> i)
+                        .boxed()
+                        .collect(Collectors.toList())
+                        .indexOf(minvalue.stream().mapToInt(i -> i).min().getAsInt()));
 //---------------------------3----------------------------------------------
         System.out.println(IntStream.of(array).filter(number -> number == 0).count());
 //---------------------------4----------------------------------------------
